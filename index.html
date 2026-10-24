@@ -301,9 +301,14 @@
   /* ─── Responsive ─────────────────────────────────────────── */
   @media (max-width: 1100px){
     .body{ grid-template-columns: 1fr; gap: 24px }
-    .hero-photo{ display:none }
+    /* Foto entre el título y los botones de país */
+    .pitch{ display:contents }
+    .headline{ order:1; margin-top: clamp(24px, 5vh, 60px) }
+    .hero-photo{ order:2; min-height:0; height: clamp(260px, 42vh, 420px) }
+    .pitch > div{ order:3 }
   }
   @media (max-width: 640px){
+    .hero-photo{ height: clamp(240px, 38vh, 340px) }
     .stage{ padding: 24px 20px }
     .headline{ font-size: 48px }
     .chooser{ grid-template-columns: 1fr; gap: 14px }
