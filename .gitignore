@@ -1,0 +1,6 @@
+scraps/
+screenshots/
+uploads/
+.thumbnail
+.DS_Store
+node_modules/

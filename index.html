@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nomada Holding Group — Somos más que arquitectos</title>
+<meta name="description" content="Nomada Holding Group. Somos más que arquitectos. Selecciona tu sede: Colombia o México." />
+
+<template id="__bundler_thumbnail" data-bg-color="#ffffff">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#ffffff"/>
+    <!-- Arrow watermark glyph -->
+    <path d="M600 220 L820 620 L600 510 L380 620 Z" fill="#1E8AC8" opacity="0.92"/>
+    <text x="600" y="720" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="44" letter-spacing="6" fill="#1a1a1a">NOMADA</text>
+  </svg>
+</template>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+  /* ─── Reset / base ───────────────────────────────────────── */
+  *,*::before,*::after{ box-sizing:border-box }
+  html,body{ margin:0; padding:0; min-height:100% }
+  img{ display:block; max-width:100%; height:auto }
+  a{ color:inherit; text-decoration:none }
+  button{ font:inherit }
+
+  :root{
+    --brand-blue:#1E8AC8;
+    --brand-blue-dark:#1773A8;
+    --ink:#1a1a1a;
+    --ink-soft:#2a2a2a;
+    --paper:#ffffff;
+    --muted:#8a8a8a;
+    --line:rgba(0,0,0,.08);
+
+    --font-display:"Avenir Next","Avenir","Rubik","Helvetica Neue",Arial,sans-serif;
+    --font-body:"Avenir Next","Avenir","Rubik","Helvetica Neue",Arial,sans-serif;
+  }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* ─── Page frame ─────────────────────────────────────────── */
+  .stage{
+    min-height:100vh;
+    display:grid;
+    grid-template-rows: auto 1fr;
+    padding: clamp(28px, 3.5vw, 56px) clamp(28px, 4vw, 80px);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Decorative oversized arrow watermark */
+  .watermark{
+    position:absolute;
+    left: -8%;
+    bottom: -18%;
+    width: 30vw;
+    aspect-ratio: 1/1;
+    pointer-events:none;
+    opacity:.022;
+    z-index:0;
+  }
+  .watermark svg{ width:100%; height:100% }
+
+  /* ─── Header ─────────────────────────────────────────────── */
+  .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    z-index:3;
+    position:relative;
+  }
+  .top .logo{
+    width: clamp(280px, 28vw, 420px);
+    height:auto;
+    animation: fadeUp .8s .05s both ease-out;
+  }
+  .top .crumb{
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    white-space:nowrap;
+    animation: fadeUp .8s .12s both ease-out;
+  }
+  .top .crumb b{ color:var(--ink); font-weight:700; margin-right:8px }
+
+  /* ─── Main body ──────────────────────────────────────────── */
+  .body{
+    display:grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(0, .95fr);
+    gap: clamp(24px, 3vw, 64px);
+    align-items:stretch;
+    padding: clamp(20px, 3vw, 40px) 0;
+    z-index:2;
+    position:relative;
+  }
+
+  /* Left: headline + country choosers stacked */
+  .pitch{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap: clamp(28px, 4vh, 56px);
+    padding-top: clamp(60px, 8vh, 120px);
+  }
+  .headline{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--ink);
+    font-size: clamp(54px, 7.2vw, 124px);
+    line-height:.92;
+    letter-spacing:-.02em;
+    margin:0;
+  }
+  .headline span{ display:block; animation: fadeUp .8s both ease-out }
+  .headline span:nth-child(1){ animation-delay:.15s }
+  .headline span:nth-child(2){ animation-delay:.26s }
+  .headline span:nth-child(3){ animation-delay:.37s }
+
+  .pitch .sub{
+    font-size: clamp(14px, 1.1vw, 16px);
+    color: var(--muted);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    display:flex; align-items:center; gap:14px;
+    animation: fadeUp .8s .48s both ease-out;
+  }
+  .pitch .sub::before{
+    content:""; display:block; width:32px; height:1.5px; background:var(--brand-blue);
+  }
+
+  /* Right: hero photo (architect protagonista) */
+  .hero-photo{
+    position:relative;
+    align-self:stretch;
+    min-height: clamp(380px, 60vh, 720px);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    animation: fadeUp 1.1s .3s both cubic-bezier(.2,.7,.2,1);
+  }
+  .hero-photo img{
+    width:auto;
+    max-width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center bottom;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+  /* Subtle decorative grid behind the hero photo */
+  .hero-photo::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,.022) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,.022) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(60% 60% at 60% 50%, #000 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(60% 60% at 60% 50%, #000 0%, transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero-photo img{ position:relative; z-index:1 }
+
+  /* ─── Country chooser (under headline, compact horizontal cards) ── */
+  .chooser{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px, 1.6vw, 24px);
+    animation: fadeUp .9s .55s both ease-out;
+  }
+  .country{
+    display:flex;
+    align-items:center;
+    gap: clamp(14px, 1.4vw, 22px);
+    padding: clamp(12px, 1.4vw, 20px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    cursor:pointer;
+    transition: transform .25s cubic-bezier(.2,.7,.2,1),
+                box-shadow .25s ease,
+                border-color .25s ease;
+    text-decoration:none;
+    color:inherit;
+  }
+  .country:hover{
+    transform: translateY(-3px);
+    border-color: var(--brand-blue);
+    box-shadow: 0 18px 36px -18px rgba(30,138,200,.4);
+  }
+  .country .map-wrap{
+    width: clamp(72px, 6vw, 96px);
+    aspect-ratio: 1/1;
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .country .map-img{
+    width:100%; height:100%;
+    object-fit:contain;
+    object-position:center;
+    user-select:none;
+    -webkit-user-drag:none;
+    filter: drop-shadow(0 6px 14px rgba(30,138,200,.18));
+    transition: filter .3s ease;
+  }
+  .country:hover .map-img{ filter: drop-shadow(0 10px 22px rgba(30,138,200,.35)) }
+
+  .country .info{ display:flex; flex-direction:column; gap:6px; flex:1; min-width:0 }
+  .country .label{
+    font-family: var(--font-display);
+    font-weight:700;
+    font-size: clamp(15px, 1.15vw, 18px);
+    letter-spacing:.18em;
+    color: var(--ink);
+    text-transform:uppercase;
+  }
+  .country .arrow-wrap{
+    width:36px; height:36px; border-radius:50%;
+    background: var(--ink);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    transition: background .25s ease, transform .25s ease;
+  }
+  .country:hover .arrow-wrap{
+    background: var(--brand-blue);
+    transform: translateX(3px);
+  }
+  .country .arrow{
+    display:inline-block; width:14px; height:10px; position:relative;
+  }
+  .country .arrow::before,
+  .country .arrow::after{ content:""; position:absolute; background:#fff; border-radius:1px }
+  .country .arrow::before{ left:0; top:4px; width:100%; height:1.5px }
+  .country .arrow::after{
+    right:0; top:1px; width:8px; height:8px;
+    border-top:1.5px solid #fff; border-right:1.5px solid #fff;
+    transform:rotate(45deg); background:transparent;
+  }
+
+  /* ─── Copyright line under chooser ───────────────────────── */
+  .copyright{
+    margin-top: clamp(18px, 2.4vh, 28px);
+    font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted);
+    animation: fadeUp .8s .7s both ease-out;
+  }
+  .copyright b{ color:var(--ink); font-weight:700; letter-spacing:.12em; margin-right:10px }
+
+  /* ─── B Corp vertical badge — bottom right, over the photo ── */
+  .bcorp{
+    position:absolute;
+    right: clamp(20px, 2.4vw, 40px);
+    bottom: clamp(20px, 2.4vw, 40px);
+    z-index: 4;
+    display:flex; flex-direction:column; align-items:center;
+    gap: 10px;
+    width: 58px;
+    padding: 14px 8px 12px;
+    background:#fff;
+    border:1.4px solid var(--ink);
+    border-radius:3px;
+    animation: fadeUp .8s .8s both ease-out;
+  }
+  .bcorp .b-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--ink); color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display); font-weight:900; font-size:20px;
+    line-height:1;
+  }
+  .bcorp .b-mark sup{ font-size:9px; vertical-align:top; margin-left:1px }
+  .bcorp .b-text{
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size:7.5px; line-height:1.3; letter-spacing:.04em; color:var(--ink);
+    text-transform:uppercase; text-align:center;
+  }
+  .bcorp .b-text b{ font-weight:700; display:block; letter-spacing:.06em }
+
+  /* ─── Animations ─────────────────────────────────────────── */
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(18px) }
+    to  { opacity:1; transform: translateY(0) }
+  }
+
+  /* ─── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 1100px){
+    .body{ grid-template-columns: 1fr; gap: 24px }
+    .hero-photo{ display:none }
+  }
+  @media (max-width: 640px){
+    .stage{ padding: 24px 20px }
+    .headline{ font-size: 48px }
+    .chooser{ grid-template-columns: 1fr; gap: 14px }
+    .top .crumb{ display:none }
+    .bcorp{ right: 16px; bottom: 16px; width: 50px; padding: 10px 6px 8px }
+  }
+</style>
+</head>
+<body>
+
+<main class="stage" data-screen-label="01 Landing">
+
+  <!-- Watermark arrow -->
+  <div class="watermark" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none">
+      <path d="M50 8 L92 92 L50 70 L8 92 Z" fill="#1E8AC8"/>
+    </svg>
+  </div>
+
+  <!-- ── Top: logo + crumb ─────────────────────────────── -->
+  <header class="top">
+    <img src="assets/logo-nomada.png" alt="Nomada Holding Group" class="logo" />
+    <div class="crumb"><b>01</b>Bienvenido — Selecciona tu sede</div>
+  </header>
+
+  <!-- ── Body: headline + country chooser (left)  +  architect photo (right) ── -->
+  <div class="body">
+
+    <div class="pitch">
+      <h1 class="headline">
+        <span>Somos</span>
+        <span>mas que</span>
+        <span>arquitectos</span>
+      </h1>
+
+      <div>
+        <div class="sub">SELECCIONA TU PAÍS</div>
+        <div class="chooser" style="margin-top:18px">
+
+          <!-- Colombia -->
+          <a class="country" href="colombia.html" data-target="colombia.html" data-comment-anchor="country-colombia">
+            <div class="map-wrap">
+              <img src="assets/mapa-colombia.jpg" alt="Mapa de Colombia" class="map-img" />
+            </div>
+            <div class="info">
+              <span class="label">Colombia</span>
+            </div>
+            <div class="arrow-wrap"><span class="arrow" aria-hidden="true"></span></div>
+          </a>
+
+          <!-- México -->
+          <a class="country" href="mexico.html" data-target="mexico.html" data-comment-anchor="country-mexico">
+            <div class="map-wrap">
+              <img src="assets/mapa-mexico.jpg" alt="Mapa de México" class="map-img" />
+            </div>
+            <div class="info">
+              <span class="label">México</span>
+            </div>
+            <div class="arrow-wrap"><span class="arrow" aria-hidden="true"></span></div>
+          </a>
+
+        </div>
+
+        <div class="copyright">
+          <b>Nomada Holding Group</b>© 2026 — Todos los derechos reservados
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="assets/persona-principal.png" alt="Arquitecto Nomada" />
+    </div>
+
+  </div>
+
+  <!-- B Corp certified badge — vertical, sobre la foto, esquina inferior derecha -->
+  <aside class="bcorp" aria-label="Empresa B Corp Certificada">
+    <div class="b-mark">B<sup>®</sup></div>
+    <div class="b-text">
+      <b>Certified</b>
+      Corporation
+    </div>
+  </aside>
+
+</main>
+
+
+<!-- ── Tweaks panel ─────────────────────────────────────── -->
+<div id="tweaks" class="tweaks" hidden>
+  <div class="tweaks__head">
+    <strong>Tweaks</strong>
+    <button type="button" id="tweaksClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="tweaks__group">
+    <label class="tweaks__label">Fuente display</label>
+    <div class="tweaks__radio" role="radiogroup">
+      <button type="button" data-font="montserrat">Montserrat</button>
+      <button type="button" data-font="rubik" class="active">Rubik</button>
+      <button type="button" data-font="nunito">Nunito</button>
+      <button type="button" data-font="avenir">Avenir*</button>
+    </div>
+    <small class="tweaks__hint">*Solo si la tienes instalada.</small>
+  </div>
+  <div class="tweaks__group">
+    <label class="tweaks__label">Color de acento</label>
+    <div class="tweaks__swatches">
+      <button type="button" data-blue="#1E8AC8" class="active" style="background:#1E8AC8" aria-label="Azul marca"></button>
+      <button type="button" data-blue="#0F6EA8" style="background:#0F6EA8" aria-label="Azul más profundo"></button>
+      <button type="button" data-blue="#2BA3DC" style="background:#2BA3DC" aria-label="Azul más claro"></button>
+      <button type="button" data-blue="#111" style="background:#111" aria-label="Negro"></button>
+    </div>
+  </div>
+  <div class="tweaks__group">
+    <label class="tweaks__label">Foto central</label>
+    <div class="tweaks__radio" role="radiogroup">
+      <button type="button" data-photo="arquitecto" class="active">Arquitecto</button>
+      <button type="button" data-photo="modelo">Modelo</button>
+      <button type="button" data-photo="none">Ninguna</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tweaks{
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    width:260px; background:#fff; color:#111;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:14px;
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,.25), 0 4px 12px -4px rgba(0,0,0,.1);
+    padding:14px 14px 16px;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size:12px;
+    animation: fadeUp .3s ease-out;
+  }
+  .tweaks__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .tweaks__head strong{font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  .tweaks__head button{background:none;border:none;font-size:20px;line-height:1;cursor:pointer;color:#666;padding:0 4px}
+  .tweaks__group{margin-top:10px}
+  .tweaks__label{display:block;font-weight:600;margin-bottom:6px;color:#444}
+  .tweaks__radio{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .tweaks__radio button{
+    border:1px solid rgba(0,0,0,.12);
+    background:#fafafa; color:#222;
+    padding:7px 8px; border-radius:8px;
+    font-size:11px; cursor:pointer; font-family:inherit;
+    transition: all .15s ease;
+  }
+  .tweaks__radio button:hover{ background:#f0f0f0 }
+  .tweaks__radio button.active{ background:#111; color:#fff; border-color:#111 }
+  .tweaks__hint{display:block;margin-top:6px;color:#888;font-size:10.5px}
+  .tweaks__swatches{display:flex;gap:6px}
+  .tweaks__swatches button{
+    width:28px;height:28px;border-radius:50%;border:2px solid transparent;
+    cursor:pointer;outline:2px solid rgba(0,0,0,.06);outline-offset:1px;
+  }
+  .tweaks__swatches button.active{ border-color:#fff; outline-color:#111 }
+</style>
+
+<script>
+  // ─── Tweaks ───────────────────────────────────────────
+  const fontStacks = {
+    montserrat: '"Avenir Next","Avenir","Montserrat","Helvetica Neue",Arial,sans-serif',
+    rubik:      '"Avenir Next","Avenir","Rubik","Helvetica Neue",Arial,sans-serif',
+    nunito:     '"Avenir Next","Avenir","Nunito","Helvetica Neue",Arial,sans-serif',
+    avenir:     '"Avenir Next","Avenir","AvenirNext-Heavy","Helvetica Neue",Arial,sans-serif'
+  };
+  const photoSrc = {
+    arquitecto: 'assets/persona-principal.png',
+    modelo:     'assets/modelo-pais.png',
+    none:       ''
+  };
+
+  const tweaks = document.getElementById('tweaks');
+  const tweaksClose = document.getElementById('tweaksClose');
+
+  window.addEventListener('message', (e) => {
+    if (!e.data || typeof e.data !== 'object') return;
+    if (e.data.type === '__activate_edit_mode')   tweaks.hidden = false;
+    if (e.data.type === '__deactivate_edit_mode') tweaks.hidden = true;
+  });
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+  tweaksClose.addEventListener('click', () => {
+    tweaks.hidden = true;
+    window.parent.postMessage({type:'__edit_mode_dismissed'}, '*');
+  });
+
+  // Font radio
+  document.querySelectorAll('.tweaks__radio [data-font]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const stack = fontStacks[btn.dataset.font];
+      document.documentElement.style.setProperty('--font-display', stack);
+      document.documentElement.style.setProperty('--font-body', stack);
+    });
+  });
+
+  // Color swatches
+  document.querySelectorAll('.tweaks__swatches button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const c = btn.dataset.blue;
+      document.documentElement.style.setProperty('--brand-blue', c);
+      document.documentElement.style.setProperty('--brand-blue-dark', shade(c, -.2));
+    });
+  });
+
+  // Photo radio
+  document.querySelectorAll('.tweaks__radio [data-photo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const src = photoSrc[btn.dataset.photo];
+      const img = document.querySelector('.hero-photo img');
+      const wrap = document.querySelector('.hero-photo');
+      if (!src) { wrap.style.visibility = 'hidden'; }
+      else { wrap.style.visibility = ''; img.src = src; }
+    });
+  });
+
+  function shade(hex, pct){
+    const h = hex.replace('#','');
+    const n = parseInt(h.length===3 ? h.split('').map(x=>x+x).join('') : h, 16);
+    let r = (n>>16)&255, g=(n>>8)&255, b=n&255;
+    r = Math.max(0, Math.min(255, Math.round(r + r*pct)));
+    g = Math.max(0, Math.min(255, Math.round(g + g*pct)));
+    b = Math.max(0, Math.min(255, Math.round(b + b*pct)));
+    return '#' + ((1<<24) + (r<<16) + (g<<8) + b).toString(16).slice(1);
+  }
+
+  // ─── Country CTAs: graceful "Próximamente" when page missing ──
+  document.querySelectorAll('.country[data-target]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = btn.dataset.target;
+      e.preventDefault();
+      fetch(target, { method:'GET', cache:'no-store' }).then(r => {
+        if (r.ok){ window.location.href = target; }
+        else { flashSoon(btn); }
+      }).catch(() => flashSoon(btn));
+    });
+  });
+  function flashSoon(btn){
+    const label = btn.querySelector('.label');
+    const original = label.textContent;
+    label.textContent = 'Próximamente';
+    btn.style.borderColor = 'var(--brand-blue)';
+    btn.style.boxShadow = '0 18px 36px -18px rgba(30,138,200,.5)';
+    setTimeout(() => { label.textContent = original; btn.style.borderColor=''; btn.style.boxShadow=''; }, 1600);
+  }
+</script>
+
+</body>
+</html>

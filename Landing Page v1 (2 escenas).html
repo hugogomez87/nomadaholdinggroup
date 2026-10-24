@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nomada Holding Group — Somos más que arquitectos</title>
+<meta name="description" content="Nomada Holding Group. Somos más que arquitectos. 7 unidades de negocio para tu proyecto inmobiliario." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+  /* ─── Reset / base ───────────────────────────────────────── */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;min-height:100%;}
+  html{scroll-behavior:smooth}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+
+  :root{
+    --brand-blue:#1E8AC8;
+    --brand-blue-dark:#1773A8;
+    --ink:#1a1a1a;
+    --ink-soft:#2a2a2a;
+    --paper:#ffffff;
+    --muted:#8a8a8a;
+
+    /* Rubik Bold (700) como display. Avenir queda como primera opción
+       si el visitante la tiene instalada (Mac/iOS). */
+    --font-display:"Avenir Next", "Avenir", "Rubik", "Helvetica Neue", Arial, sans-serif;
+    --font-body:"Avenir Next", "Avenir", "Rubik", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* ─── Layout ─────────────────────────────────────────────── */
+  .scene{
+    min-height:100vh;
+  }
+  .page{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items:stretch;
+  }
+
+  /* ─── Left column ────────────────────────────────────────── */
+  .left{
+    position:relative;
+    padding: clamp(32px, 5vw, 80px) clamp(32px, 6vw, 96px);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  .logo{
+    width: clamp(180px, 18vw, 260px);
+    height:auto;
+    animation: fadeUp .8s .05s both ease-out;
+  }
+
+  .hero{
+    margin-top: clamp(24px, 6vh, 64px);
+  }
+
+  .headline{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--ink);
+    font-size: clamp(56px, 8.4vw, 132px);
+    line-height:.95;
+    letter-spacing:-.02em;
+    margin:0 0 clamp(28px, 4vh, 48px) 0;
+    text-wrap:balance;
+  }
+  .headline span{display:block;animation:fadeUp .8s both ease-out}
+  .headline span:nth-child(1){animation-delay:.15s}
+  .headline span:nth-child(2){animation-delay:.28s}
+  .headline span:nth-child(3){animation-delay:.41s}
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:.01em;
+    color:#fff;
+    background:var(--brand-blue);
+    border:none;
+    border-radius:999px;
+    padding:18px 38px 18px 32px;
+    cursor:pointer;
+    box-shadow: 0 10px 30px -10px rgba(30,138,200,.55), 0 2px 0 rgba(0,0,0,.02);
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease, padding .25s ease;
+    animation: fadeUp .8s .6s both ease-out;
+    will-change: transform;
+  }
+  .cta:hover{
+    background:var(--brand-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -12px rgba(30,138,200,.7);
+    padding-right:48px;
+  }
+  .cta:active{transform: translateY(0)}
+  .cta .arrow{
+    display:inline-block;
+    width:18px;height:12px;
+    position:relative;
+    transition: transform .25s ease;
+  }
+  .cta .arrow::before,
+  .cta .arrow::after{
+    content:""; position:absolute; background:#fff; border-radius:2px;
+  }
+  .cta .arrow::before{ left:0; top:5px; width:100%; height:2px; }
+  .cta .arrow::after{
+    right:0; top:1px; width:10px; height:10px;
+    border-top:2px solid #fff; border-right:2px solid #fff;
+    transform: rotate(45deg); background:transparent; border-radius:1px;
+  }
+  .cta:hover .arrow{ transform: translateX(4px); }
+  .cta .arrow-down{ transform: rotate(90deg); }
+  .cta:hover .arrow-down{ transform: rotate(90deg) translateX(4px); }
+
+  /* Footer block on the left column */
+  .left-foot{
+    margin-top: clamp(40px, 8vh, 72px);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    animation: fadeUp .8s .8s both ease-out;
+  }
+  .left-foot .scroll{
+    display:flex;align-items:center;gap:10px;
+    cursor:pointer;
+  }
+  .left-foot .scroll .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--brand-blue);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  .left-foot .scroll .chev{
+    display:inline-block;width:10px;height:10px;
+    border-right:1.5px solid var(--brand-blue);
+    border-bottom:1.5px solid var(--brand-blue);
+    transform: rotate(45deg) translate(-2px,-2px);
+    animation: chev 1.6s ease-in-out infinite;
+  }
+  @keyframes chev{
+    0%,100%{transform: rotate(45deg) translate(-2px,-2px)}
+    50%   {transform: rotate(45deg) translate( 2px, 2px)}
+  }
+
+  /* ─── Right column / photo ───────────────────────────────── */
+  .right{
+    position:relative;
+    background:#fff;
+    overflow:hidden;
+  }
+  .right .photo{
+    position:absolute; inset:0;
+    background-image:url('assets/persona-principal.png');
+    background-repeat:no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+    animation: photoIn 1.2s .2s both cubic-bezier(.2,.7,.2,1);
+  }
+  /* Subtle decorative grid behind the photo */
+  .right::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(60% 60% at 60% 50%, #000 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(60% 60% at 60% 50%, #000 0%, transparent 70%);
+    opacity:.6;
+    pointer-events:none;
+  }
+
+  /* ─── B Corp badge ───────────────────────────────────────── */
+  .bcorp{
+    position:absolute;
+    right: clamp(20px, 2vw, 36px);
+    bottom: clamp(20px, 2vw, 36px);
+    width: 76px;
+    background:#fff;
+    border:1.5px solid #111;
+    border-radius:4px;
+    padding:8px 6px 6px;
+    text-align:center;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size:8.5px;
+    line-height:1.25;
+    color:#111;
+    letter-spacing:.02em;
+    z-index:5;
+    animation: fadeUp .8s 1s both ease-out;
+  }
+  .bcorp .b-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:#111;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:900;font-size:22px;
+    margin:0 auto 4px;
+    line-height:1;
+  }
+  .bcorp .b-mark sup{font-size:9px;font-weight:700;margin-left:1px;vertical-align:top}
+  .bcorp .label{display:block;font-weight:700;text-transform:none;}
+  .bcorp .sub{display:block;color:#666;margin-top:2px;font-size:7.5px}
+  .bcorp a{color:#111;border-bottom:1px solid #111;}
+
+  /* ─── Decorative arrow watermark ─────────────────────────── */
+  .watermark{
+    position:absolute;
+    left: -8%;
+    bottom: -10%;
+    width: 50%;
+    aspect-ratio: 1/1;
+    pointer-events:none;
+    opacity:.04;
+    z-index:0;
+  }
+  .watermark svg{width:100%;height:100%}
+
+  /* ─── Country select scene ───────────────────────────────── */
+  .country{
+    position:relative;
+    background:#fff;
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(28px,4vw,56px) clamp(24px,4vw,64px);
+    overflow:hidden;
+  }
+  .country-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    z-index:3;
+    position:relative;
+  }
+  .country-head .logo{ width: clamp(160px, 14vw, 220px); }
+  .country-head .crumb{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .country-head .crumb b{color:var(--ink); font-weight:700}
+
+  .country-stage{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items:center;
+    justify-items:center;
+    gap: clamp(16px, 3vw, 48px);
+    padding: clamp(20px,3vw,40px) 0;
+    min-height: 72vh;
+  }
+
+  .country-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: clamp(20px, 3vh, 40px);
+    z-index:2;
+    position:relative;
+  }
+
+  .country-card .map-wrap{
+    width: clamp(220px, 26vw, 360px);
+    aspect-ratio: 1/1;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .country-card:hover .map-wrap{
+    transform: translateY(-6px) scale(1.02);
+  }
+  .country-card .map-img{
+    width:100%; height:100%;
+    object-fit:contain;
+    object-position:center;
+    user-select:none;
+    -webkit-user-drag:none;
+    filter: drop-shadow(0 10px 28px rgba(30,138,200,.18));
+    transition: filter .4s ease;
+  }
+  .country-card:hover .map-img{
+    filter: drop-shadow(0 14px 36px rgba(30,138,200,.32));
+  }
+
+  .country-card .country-label{
+    font-family: var(--font-display);
+    font-weight:700;
+    font-size: clamp(14px,1.2vw,16px);
+    letter-spacing:.32em;
+    color:var(--ink);
+    text-transform:uppercase;
+  }
+
+  .cta-dark{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.04em;
+    color:#fff;
+    background:#111;
+    border:none;
+    border-radius:999px;
+    padding:14px 32px;
+    cursor:pointer;
+    box-shadow: 0 8px 24px -10px rgba(0,0,0,.4);
+    transition: transform .25s ease, background .25s ease, padding .25s ease;
+  }
+  .cta-dark:hover{
+    background:var(--brand-blue);
+    transform: translateY(-2px);
+    padding-right: 42px;
+  }
+  .cta-dark .arrow-sm{
+    display:inline-block; width:14px; height:10px; position:relative;
+    transition:transform .25s ease; opacity:0;
+  }
+  .cta-dark .arrow-sm::before,
+  .cta-dark .arrow-sm::after{content:"";position:absolute;background:#fff;border-radius:1px}
+  .cta-dark .arrow-sm::before{left:0;top:4px;width:100%;height:1.5px}
+  .cta-dark .arrow-sm::after{
+    right:0;top:1px;width:8px;height:8px;
+    border-top:1.5px solid #fff;border-right:1.5px solid #fff;
+    transform:rotate(45deg);background:transparent;
+  }
+  .cta-dark:hover .arrow-sm{ opacity:1; transform:translateX(2px) }
+
+  /* Center column: the model */
+  .country-model{
+    position:relative;
+    height: 78vh;
+    max-height: 720px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .country-model img{
+    height:100%;
+    width:auto;
+    object-fit:contain;
+    object-position:center bottom;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+
+  .country-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    gap:24px;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top: 12px;
+    z-index:3;
+    position:relative;
+  }
+  .country-foot .back{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    color:var(--ink); font-weight:600;
+  }
+  .country-foot .back .chev-up{
+    display:inline-block;width:9px;height:9px;
+    border-left:1.5px solid var(--ink);
+    border-top:1.5px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  /* Reveal animation when section enters */
+  .country.is-visible .country-head{ animation: fadeUp .7s .05s both ease-out; }
+  .country.is-visible .country-foot{ animation: fadeUp .7s .30s both ease-out; }
+
+  /* ─── Animations ─────────────────────────────────────────── */
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(18px)}
+    to  {opacity:1;transform:translateY(0)}
+  }
+  @keyframes photoIn{
+    from{opacity:0;transform: translateY(20px) scale(1.02)}
+    to  {opacity:1;transform: translateY(0) scale(1)}
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);opacity:1}
+    50%   {transform:scale(1.8);opacity:.3}
+  }
+
+  /* ─── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 900px){
+    .page{grid-template-columns:1fr; grid-template-rows: auto 60vh}
+    .right{order:2}
+    .left{order:1; padding: 28px 24px 40px}
+    .right .photo{background-position:center top;}
+    .watermark{display:none}
+    .bcorp{right:16px;bottom:16px;width:64px}
+    .left-foot{display:none}
+
+    .country-stage{
+      grid-template-columns:1fr;
+      grid-template-rows: auto auto auto;
+      min-height: auto;
+    }
+    .country-model{
+      order:-1;
+      height: 50vh;
+      max-height: 480px;
+    }
+    .country-card .map-wrap{width: clamp(180px, 50vw, 280px)}
+  }
+  @media (max-width: 480px){
+    .headline{font-size:54px}
+    .cta{font-size:16px;padding:16px 28px}
+    .country-foot{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<main class="site">
+
+<section class="scene page" id="hero" data-screen-label="01 Landing">
+
+  <!-- ── LEFT ─────────────────────────────────────────────── -->
+  <section class="left">
+
+    <!-- Decorative oversized arrow mark in the background -->
+    <div class="watermark" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 8 L92 92 L50 70 L8 92 Z" fill="#1E8AC8"/>
+      </svg>
+    </div>
+
+    <header>
+      <img src="assets/logo-nomada.png" alt="Nomada Holding Group" class="logo" />
+    </header>
+
+    <div class="hero">
+      <h1 class="headline">
+        <span>Somos</span>
+        <span>mas que</span>
+        <span>arquitectos</span>
+      </h1>
+
+      <a href="#country" class="cta" id="enterBtn">
+        <span>Entrar</span>
+        <span class="arrow arrow-down" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="left-foot">
+      <span>Nomada Holding Group · 2026</span>
+      <a href="#country" class="scroll" id="scrollHint">
+        <span class="chev"></span>
+        Selecciona país
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ── RIGHT ────────────────────────────────────────────── -->
+  <section class="right" aria-hidden="true">
+    <div class="photo" role="img" aria-label="Arquitecto Carlos Arciniegas"></div>
+
+    <!-- B Corp certified badge (placeholder, sustituir por marca oficial) -->
+    <aside class="bcorp" aria-label="Empresa B Corp Certificada">
+      <div class="b-mark">B<sup>®</sup></div>
+      <span class="label">Empresa</span>
+      <span class="label">Certificada</span>
+      <span class="sub">Más información en</span>
+      <span class="sub"><a href="https://bcorporation.net" target="_blank" rel="noopener">bcorp.com</a></span>
+    </aside>
+  </section>
+
+</section><!-- /#hero -->
+
+
+<!-- ═══ COUNTRY SELECT SCENE ═════════════════════════════════ -->
+<section class="scene country" id="country" data-screen-label="02 Pais">
+
+  <header class="country-head">
+    <img src="assets/logo-nomada.png" alt="Nomada Holding Group" class="logo" />
+    <div class="crumb"><b>02</b> &nbsp;·&nbsp; Selecciona tu país</div>
+  </header>
+
+  <div class="country-stage">
+
+    <!-- Colombia -->
+    <div class="country-card">
+      <div class="map-wrap">
+        <img src="assets/mapa-colombia.jpg" alt="Mapa de Colombia" class="map-img" />
+      </div>
+      <span class="country-label">Colombia</span>
+      <a href="colombia.html" class="cta-dark" data-target="colombia.html">
+        <span>Empezar</span>
+        <span class="arrow-sm" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Modelo central -->
+    <div class="country-model">
+      <img src="assets/modelo-pais.png" alt="Modelo Nomada" />
+    </div>
+
+    <!-- México -->
+    <div class="country-card">
+      <div class="map-wrap">
+        <img src="assets/mapa-mexico.jpg" alt="Mapa de México" class="map-img" />
+      </div>
+      <span class="country-label">México</span>
+      <a href="mexico.html" class="cta-dark" data-target="mexico.html">
+        <span>Empezar</span>
+        <span class="arrow-sm" aria-hidden="true"></span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="country-foot">
+    <a href="#hero" class="back"><span class="chev-up"></span> Volver</a>
+    <span>Cali · Colombia &nbsp;—&nbsp; Playa del Carmen · México</span>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ── Tweaks panel ────────────────────────────────────────── -->
+<div id="tweaks" class="tweaks" hidden>
+  <div class="tweaks__head">
+    <strong>Tweaks</strong>
+    <button type="button" id="tweaksClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="tweaks__group">
+    <label class="tweaks__label">Fuente display</label>
+    <div class="tweaks__radio" role="radiogroup">
+      <button type="button" data-font="montserrat">Montserrat</button>
+      <button type="button" data-font="rubik" class="active">Rubik</button>
+      <button type="button" data-font="nunito">Nunito</button>
+      <button type="button" data-font="avenir">Avenir*</button>
+    </div>
+    <small class="tweaks__hint">*Solo si la tienes instalada en el sistema.</small>
+  </div>
+  <div class="tweaks__group">
+    <label class="tweaks__label">Color de acento</label>
+    <div class="tweaks__swatches">
+      <button type="button" data-blue="#1E8AC8" class="active" style="background:#1E8AC8" aria-label="Azul marca"></button>
+      <button type="button" data-blue="#0F6EA8" style="background:#0F6EA8" aria-label="Azul más profundo"></button>
+      <button type="button" data-blue="#2BA3DC" style="background:#2BA3DC" aria-label="Azul más claro"></button>
+      <button type="button" data-blue="#111" style="background:#111" aria-label="Negro"></button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tweaks{
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    width:260px; background:#fff; color:#111;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:14px;
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,.25), 0 4px 12px -4px rgba(0,0,0,.1);
+    padding:14px 14px 16px;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size:12px;
+    animation: fadeUp .3s ease-out;
+  }
+  .tweaks__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .tweaks__head strong{font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  .tweaks__head button{background:none;border:none;font-size:20px;line-height:1;cursor:pointer;color:#666;padding:0 4px}
+  .tweaks__group{margin-top:10px}
+  .tweaks__label{display:block;font-weight:600;margin-bottom:6px;color:#444}
+  .tweaks__radio{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .tweaks__radio button{
+    border:1px solid rgba(0,0,0,.12);
+    background:#fafafa; color:#222;
+    padding:7px 8px; border-radius:8px;
+    font-size:11px; cursor:pointer; font-family:inherit;
+    transition: all .15s ease;
+  }
+  .tweaks__radio button:hover{background:#f0f0f0}
+  .tweaks__radio button.active{background:#111;color:#fff;border-color:#111}
+  .tweaks__hint{display:block;margin-top:6px;color:#888;font-size:10.5px}
+  .tweaks__swatches{display:flex;gap:6px}
+  .tweaks__swatches button{
+    width:28px;height:28px;border-radius:50%;border:2px solid transparent;
+    cursor:pointer;outline:2px solid rgba(0,0,0,.06);outline-offset:1px;
+  }
+  .tweaks__swatches button.active{border-color:#fff;outline-color:#111}
+</style>
+
+<script>
+  // ─── Tweaks: font + accent color ──────────────────────────
+  const fontStacks = {
+    montserrat: '"Avenir Next","Avenir","Montserrat","Helvetica Neue",Arial,sans-serif',
+    rubik:      '"Avenir Next","Avenir","Rubik","Helvetica Neue",Arial,sans-serif',
+    nunito:     '"Avenir Next","Avenir","Nunito","Helvetica Neue",Arial,sans-serif',
+    avenir:     '"Avenir Next","Avenir","AvenirNext-Heavy","Helvetica Neue",Arial,sans-serif'
+  };
+  const tweaks = document.getElementById('tweaks');
+  const tweaksClose = document.getElementById('tweaksClose');
+
+  // Show tweaks when host activates edit mode
+  window.addEventListener('message', (e) => {
+    if (!e.data || typeof e.data !== 'object') return;
+    if (e.data.type === '__activate_edit_mode')   tweaks.hidden = false;
+    if (e.data.type === '__deactivate_edit_mode') tweaks.hidden = true;
+  });
+  // Announce we support tweaks
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+  tweaksClose.addEventListener('click', () => {
+    tweaks.hidden = true;
+    window.parent.postMessage({type:'__edit_mode_dismissed'}, '*');
+  });
+
+  // Font radio
+  document.querySelectorAll('.tweaks__radio button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tweaks__radio button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const stack = fontStacks[btn.dataset.font];
+      document.documentElement.style.setProperty('--font-display', stack);
+      document.documentElement.style.setProperty('--font-body', stack);
+    });
+  });
+
+  // Color swatches
+  document.querySelectorAll('.tweaks__swatches button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tweaks__swatches button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const c = btn.dataset.blue;
+      document.documentElement.style.setProperty('--brand-blue', c);
+      // tweak the dark variant proportionally
+      document.documentElement.style.setProperty('--brand-blue-dark', shade(c, -.2));
+    });
+  });
+  function shade(hex, pct){
+    const h = hex.replace('#','');
+    const n = parseInt(h.length===3 ? h.split('').map(x=>x+x).join('') : h, 16);
+    let r = (n>>16)&255, g=(n>>8)&255, b=n&255;
+    r = Math.max(0, Math.min(255, Math.round(r + r*pct)));
+    g = Math.max(0, Math.min(255, Math.round(g + g*pct)));
+    b = Math.max(0, Math.min(255, Math.round(b + b*pct)));
+    return '#' + ((1<<24) + (r<<16) + (g<<8) + b).toString(16).slice(1);
+  }
+</script>
+
+<script>
+  // Make Entrar a clean smooth-scroll anchor (browser handles it).
+  // Country cards: gracefully warn when target page doesn't exist yet.
+  document.querySelectorAll('.cta-dark[data-target]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = btn.dataset.target;
+      e.preventDefault();
+      fetch(target, { method:'HEAD' }).then(r => {
+        if (r.ok){ window.location.href = target; }
+        else { flashSoon(btn); }
+      }).catch(() => flashSoon(btn));
+    });
+  });
+  function flashSoon(btn){
+    const lbl = btn.querySelector('span');
+    const original = lbl.textContent;
+    lbl.textContent = 'Próximamente';
+    btn.style.background = 'var(--brand-blue)';
+    setTimeout(() => { lbl.textContent = original; btn.style.background=''; }, 1600);
+  }
+
+  // Reveal animation when country scene enters viewport
+  const country = document.getElementById('country');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting) country.classList.add('is-visible'); });
+  }, { threshold: .25 });
+  io.observe(country);
+</script>
+</body>
+</html>
